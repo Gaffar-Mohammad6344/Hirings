@@ -48,7 +48,7 @@ export default function ContactForm() {
     setStatus({ type: '', message: '' });
 
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', formData);
+      const response = await axios.post('/api/contact', formData);
       if (response.data.success) {
         setStatus({ type: 'success', message: 'Message sent! We will get back to you shortly.' });
         
