@@ -104,8 +104,7 @@ const [isOpen, setIsOpen] = useState(false);
     data.append("resume", file);
 
     const response = await axios.post(
-      // "http://localhost:5000/api/candidates/apply",
-       "/api/candidates/apply",
+      "http://localhost:5000/api/candidates/apply",
       data,
       {
         headers: {
