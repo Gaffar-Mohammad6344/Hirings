@@ -46,287 +46,13 @@
 
 
 
-// import React from 'react';
-// import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-// import { ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import React from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-// // Import your components
-// import Navbar from "./components/Navbar";
-// import Home from "./pages/Home";
-// import Services from "./components/Services";
-// import Pricing from "./components/Pricing";
-// import Testimonials from "./components/Testimonials";
-// import Work from "./components/Work";
-// import ContactForm from "./components/ContactForm";
-// import CandidateForm from "./components/CandidateForm";
-// import Register from "./components/Register";
-// import Login from "./components/Login";
-// import ForgotPassword from "./components/ForgotPassword";
-// import Dashboard from "./components/Dashboard";
-
-// // --- 1. PROTECTED ROUTE COMPONENT ---
-// const ProtectedRoute = ({ children }) => {
-//   const token = localStorage.getItem("token");
-//   const location = useLocation();
-
-//   const isAuthenticated = token && token !== "null" && token !== "undefined";
-
-//   if (!isAuthenticated) {
-//     return <Navigate to="/login" state={{ from: location }} replace />;
-//   }
-
-//   return children;
-// };
-
-// // --- 2. AUTH ROUTE COMPONENT ---
-// const AuthRoute = ({ children }) => {
-//   const token = localStorage.getItem("token");
-
-//   const isAuthenticated =
-//     token &&
-//     token !== "null" &&
-//     token !== "undefined";
-
-//   if (isAuthenticated) {
-//     return <Navigate to="/dashboard" replace />;
-//   }
-
-//   return children;
-// };
-// function App() {
-//   return (
-//     <div className="min-h-screen bg-background">
-//       {/* Navbar stays at the top */}
-//       <Navbar />
-      
-//       <ToastContainer position="top-right" autoClose={3000} />
-      
-//       <main>
-//         <Routes>
-//           {/* Public Routes */}
-//           <Route path="/" element={<Home />} />
-//           <Route path="/services" element={<Services />} />
-//           <Route path="/pricing" element={<Pricing />} />
-//           <Route path="/testimonials" element={<Testimonials />} />
-//           <Route path="/work" element={<Work />} />
-//           <Route path="/contact" element={<ContactForm />} />
-//           <Route path="/submit-resume" element={<CandidateForm />} />
-//           <Route path="/forgot-password" element={<ForgotPassword />} />
-
-//           {/* Auth Protected Routes (Login/Register) */}
-//           <Route path="/register" element={<AuthRoute><Register /></AuthRoute>} />
-//           <Route path="/login" element={<AuthRoute><Login /></AuthRoute>} />
-
-//           {/* Private Dashboard Route */}
-//           <Route 
-//             path="/dashboard" 
-//             element={
-//               <ProtectedRoute>
-//                 <Dashboard />
-//               </ProtectedRoute>
-//             } 
-//           />
-//         </Routes>
-//       </main>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-// import React from "react";
-// import {
-//   Routes,
-//   Route,
-//   Navigate,
-//   useLocation,
-// } from "react-router-dom";
-
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-
-// // Pages / Components
-// import Home from "./pages/Home";
-// import Services from "./components/Services";
-// import Pricing from "./components/Pricing";
-// import Testimonials from "./components/Testimonials";
-// import Work from "./components/Work";
-// import ContactForm from "./components/ContactForm";
-// import CandidateForm from "./components/CandidateForm";
-// import Navbar from "./components/Navbar";
-// import Register from "./components/Register";
-// import Login from "./components/Login";
-// import ForgotPassword from "./components/ForgotPassword";
-// import Dashboard from "./components/Dashboard";
-
-// // ------------------------------------
-// // PROTECTED ROUTE
-// // ------------------------------------
-// const ProtectedRoute = ({ children }) => {
-//   const token = localStorage.getItem("token");
-//   const location = useLocation();
-
-//   const isAuthenticated =
-//     token &&
-//     token !== "null" &&
-//     token !== "undefined";
-
-// if (isAuthenticated) {
-//   return <Navigate to="/dashboard" replace />;
-// }
-
-//   return children;
-// };
-
-// // ------------------------------------
-// // AUTH ROUTE
-// // ------------------------------------
-// const AuthRoute = ({ children }) => {
-//   const token = localStorage.getItem("token");
-
-//   const isAuthenticated =
-//     token &&
-//     token !== "null" &&
-//     token !== "undefined";
-
-//   if (isAuthenticated) {
-//     return <Navigate to="/dashboard" replace />;
-//   }
-
-//   return children;
-// };
-
-// // ------------------------------------
-// // APP
-// // ------------------------------------
-// function App() {
-//   return (
-//     <>
-//       <ToastContainer
-//         position="top-right"
-//         autoClose={3000}
-//       />
-
-//       <main>
-//         <Routes>
-
-//           {/* =========================
-//               PUBLIC ROUTES
-//           ========================= */}
-
-//           <Route
-//             path="/"
-//             element={<Home />}
-//           />
-
-//           <Route
-//             path="/services"
-//             element={<Services />}
-//           />
-
-//           <Route
-//             path="/pricing"
-//             element={<Pricing />}
-//           />
-
-//           <Route
-//             path="/testimonials"
-//             element={<Testimonials />}
-//           />
-
-//           <Route
-//             path="/work"
-//             element={<Work />}
-//           />
-
-//           <Route
-//             path="/contact"
-//             element={<ContactForm />}
-//           />
-
-//           <Route
-//             path="/submit-resume"
-//             element={<CandidateForm />}
-//           />
-
-//           <Route
-//             path="/forgot-password"
-//             element={<ForgotPassword />}
-//           />
-
-//           {/* =========================
-//               ADMIN AUTH
-//           ========================= */}
-
-//           <Route
-//             path="/register"
-//             element={
-//               <AuthRoute>
-//                 <Register />
-//               </AuthRoute>
-//             }
-//           />
-
-//           <Route
-//             path="/login"
-//             element={
-//               <AuthRoute>
-//                 <Login />
-//               </AuthRoute>
-//             }
-//           />
-
-//           {/* =========================
-//               ADMIN DASHBOARD
-//           ========================= */}
-
-//           <Route
-//             path="/dashboard"
-//             element={
-//               <ProtectedRoute>
-//                 <Dashboard />
-//               </ProtectedRoute>
-//             }
-//           />
-
-//           {/* =========================
-//               FALLBACK
-//           ========================= */}
-
-//           <Route
-//             path="*"
-//             element={<Navigate to="/" replace />}
-//           />
-
-//         </Routes>
-//       </main>
-//     </>
-//   );
-// }
-
-// export default App;
-
-
-
-
-import React from "react";
-
-import {
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
-
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-// Navbar
+// Import your components
 import Navbar from "./components/Navbar";
-
-// Pages / Components
 import Home from "./pages/Home";
 import Services from "./components/Services";
 import Pricing from "./components/Pricing";
@@ -334,51 +60,29 @@ import Testimonials from "./components/Testimonials";
 import Work from "./components/Work";
 import ContactForm from "./components/ContactForm";
 import CandidateForm from "./components/CandidateForm";
-
 import Register from "./components/Register";
 import Login from "./components/Login";
 import ForgotPassword from "./components/ForgotPassword";
 import Dashboard from "./components/Dashboard";
 
-
-// ========================================
-// PROTECTED ROUTE
-// ========================================
-
+// --- 1. PROTECTED ROUTE COMPONENT ---
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem("token");
   const location = useLocation();
 
-  const isAuthenticated =
-    token &&
-    token !== "null" &&
-    token !== "undefined";
+  const isAuthenticated = token && token !== "null" && token !== "undefined";
 
   if (!isAuthenticated) {
-    return (
-      <Navigate
-        to="/login"
-        state={{ from: location }}
-        replace
-      />
-    );
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   return children;
 };
 
-
-// ========================================
-// AUTH ROUTE
-// ========================================
-
+// --- 2. AUTH ROUTE COMPONENT ---
 const AuthRoute = ({ children }) => {
   const token = localStorage.getItem("token");
-
-  const isAuthenticated =
-    token &&
-    token !== "null" &&
-    token !== "undefined";
+  const isAuthenticated = token && token !== "null" && token !== "undefined";
 
   if (isAuthenticated) {
     return <Navigate to="/dashboard" replace />;
@@ -387,125 +91,42 @@ const AuthRoute = ({ children }) => {
   return children;
 };
 
-
-// ========================================
-// APP
-// ========================================
-
 function App() {
   return (
-    <>
-      {/* NAVBAR */}
+    <div className="min-h-screen bg-background">
+      {/* Navbar stays at the top */}
       <Navbar />
-
-      {/* TOAST NOTIFICATIONS */}
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-      />
-
+      
+      <ToastContainer position="top-right" autoClose={3000} />
+      
       <main>
         <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/contact" element={<ContactForm />} />
+          <Route path="/submit-resume" element={<CandidateForm />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
 
-          {/* ==============================
-              PUBLIC ROUTES
-          ============================== */}
+          {/* Auth Protected Routes (Login/Register) */}
+          <Route path="/register" element={<AuthRoute><Register /></AuthRoute>} />
+          <Route path="/login" element={<AuthRoute><Login /></AuthRoute>} />
 
-          <Route
-            path="/"
-            element={<Home />}
-          />
-
-          <Route
-            path="/services"
-            element={<Services />}
-          />
-
-          <Route
-            path="/pricing"
-            element={<Pricing />}
-          />
-
-          <Route
-            path="/testimonials"
-            element={<Testimonials />}
-          />
-
-          <Route
-            path="/work"
-            element={<Work />}
-          />
-
-          <Route
-            path="/contact"
-            element={<ContactForm />}
-          />
-
-          <Route
-            path="/submit-resume"
-            element={<CandidateForm />}
-          />
-
-          <Route
-            path="/forgot-password"
-            element={<ForgotPassword />}
-          />
-
-
-          {/* ==============================
-              ADMIN REGISTER
-          ============================== */}
-
-          <Route
-            path="/register"
-            element={
-              <AuthRoute>
-                <Register />
-              </AuthRoute>
-            }
-          />
-
-
-          {/* ==============================
-              ADMIN LOGIN
-          ============================== */}
-
-          <Route
-            path="/login"
-            element={
-              <AuthRoute>
-                <Login />
-              </AuthRoute>
-            }
-          />
-
-
-          {/* ==============================
-              ADMIN DASHBOARD
-          ============================== */}
-
-          <Route
-            path="/dashboard"
+          {/* Private Dashboard Route */}
+          <Route 
+            path="/dashboard" 
             element={
               <ProtectedRoute>
                 <Dashboard />
               </ProtectedRoute>
-            }
+            } 
           />
-
-
-          {/* ==============================
-              UNKNOWN ROUTE
-          ============================== */}
-
-          <Route
-            path="*"
-            element={<Navigate to="/" replace />}
-          />
-
         </Routes>
       </main>
-    </>
+    </div>
   );
 }
 
