@@ -82,7 +82,11 @@ const ProtectedRoute = ({ children }) => {
 // --- 2. AUTH ROUTE COMPONENT ---
 const AuthRoute = ({ children }) => {
   const token = localStorage.getItem("token");
-  const isAuthenticated = token && token !== "null" && token !== "undefined";
+
+  const isAuthenticated =
+    token &&
+    token !== "null" &&
+    token !== "undefined";
 
   if (isAuthenticated) {
     return <Navigate to="/dashboard" replace />;
