@@ -48,21 +48,17 @@ app.use("/api/contact", contactRoutes);
 //     console.error("❌ Database connection failed:", err);
 //     process.exit(1);
 //   });
-
 const port = process.env.PORT || 5000;
 
 connectDB()
   .then(() => {
-    if (process.env.NODE_ENV !== "production") {
-      app.listen(port, () => {
-        console.log(`🚀 Server listening on port ${port}`);
-      });
-    }
+    app.listen(port, "0.0.0.0", () => {
+      console.log(`🚀 Server listening on port ${port}`);
+    });
   })
   .catch((err) => {
     console.error("❌ Database connection failed:", err);
     process.exit(1);
   });
 
-  
 export default app;
