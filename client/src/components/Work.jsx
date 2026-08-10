@@ -111,6 +111,129 @@
 
 
 
+// import React from 'react';
+// import { motion } from 'framer-motion';
+// import { Zap } from 'lucide-react';
+
+// const Work = () => {
+//   const steps = [
+//     {
+//       number: "1",
+//       title: "We Understand Your Requirements",
+//       description: "Our recruiters source qualified candidates through multiple channels and professional networks."
+//     },
+//     {
+//       number: "2",
+//       title: "We Find the Right Talent",
+//       description: "We utilize advanced sourcing techniques to identify top-tier talent that matches your specific culture."
+//     },
+//     {
+//       number: "3",
+//       title: "We Screen & Shortlist",
+//       description: "Every candidate is evaluated for skills, experience, communication, and role fit before reaching you."
+//     },
+//     {
+//       number: "4",
+//       title: "We Support Until Hiring",
+//       description: "From interview coordination to offer acceptance and onboarding, we stay involved until the position is filled."
+//     }
+//   ];
+
+//   return (
+//     <section className="min-h-screen py-16 md:py-24 bg-[#F8FAFC] overflow-hidden flex items-center">
+//       <div className="container mx-auto px-6 lg:px-12">
+        
+//         {/* --- HEADER --- */}
+//         <div className="max-w-4xl mb-12 md:mb-20">
+//            <motion.div 
+//               initial={{ opacity: 0, y: -10 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               viewport={{ once: true }}
+//               className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 text-slate-500 text-[11px] font-bold uppercase tracking-[0.12em] mb-6 shadow-sm w-fit"
+//             >
+//               <div className="flex items-center justify-center w-5 h-5 rounded-md bg-blue-50">
+//                 <Zap size={12} className="text-[#0B57D0] fill-[#0B57D0]/20" /> 
+//               </div>
+//              The Process
+//             </motion.div>
+          
+//           <h2 className="text-3xl md:text-5xl font-black text-[#071952] tracking-tighter mb-4 leading-tight">
+//             Our Hiring Process
+//           </h2>
+          
+//           <div className="w-16 md:w-20 h-1.5 bg-[#0B57D0] mb-6 rounded-full" />
+          
+//           <p className="text-base md:text-xl text-slate-500 font-medium max-w-2xl">
+//            We make hiring simple, transparent, and efficient.
+//           </p>
+//         </div>
+
+//         {/* --- TIMELINE AREA --- */}
+//         <div className="relative">
+          
+//           {/* DESKTOP Horizontal Line (Visible only on LG screens) */}
+//           <div className="hidden lg:block absolute top-[40px] left-10 w-[calc(100%-80px)] h-[2px] bg-slate-200 z-0">
+//             <motion.div 
+//               initial={{ width: 0 }}
+//               whileInView={{ width: '100%' }}
+//               viewport={{ once: true }}
+//               transition={{ duration: 1.5, ease: "easeInOut" }}
+//               className="h-full bg-[#0B57D0]"
+//             />
+//           </div>
+
+//           {/* MOBILE Vertical Line (Visible only on mobile/tablet) */}
+//           <div className="lg:hidden absolute left-[39px] top-10 bottom-10 w-[2px] bg-slate-200 z-0">
+//             <motion.div 
+//               initial={{ height: 0 }}
+//               whileInView={{ height: '100%' }}
+//               viewport={{ once: true }}
+//               transition={{ duration: 1.5, ease: "easeInOut" }}
+//               className="w-full bg-[#0B57D0]"
+//             />
+//           </div>
+
+//           {/* Grid: 1 col on mobile, 4 on desktop */}
+//           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10">
+//             {steps.map((step, index) => (
+//               <motion.div 
+//                 key={index}
+//                 initial={{ opacity: 0, x: -20 }}
+//                 whileInView={{ opacity: 1, x: 0 }}
+//                 viewport={{ once: true }}
+//                 transition={{ delay: index * 0.2, duration: 0.5 }}
+//                 className="flex flex-row lg:flex-col items-start gap-6 lg:gap-0"
+//               >
+//                 {/* Number Circle */}
+//                 <div className="w-20 h-20 rounded-full bg-white border-2 border-[#0B57D0] flex items-center justify-center mb-6 shadow-xl group hover:bg-[#0B57D0] transition-colors duration-300 flex-shrink-0 z-20">
+//                   <span className="text-2xl font-black text-[#071952] group-hover:text-white transition-colors">
+//                     {step.number}
+//                   </span>
+//                 </div>
+
+//                 {/* Text Content */}
+//                 <div className="flex flex-col pt-2 lg:pt-0">
+//                   <h3 className="text-xl font-black text-[#071952] mb-2 md:mb-3 tracking-tight leading-snug">
+//                     {step.title}
+//                   </h3>
+//                   <p className="text-slate-500 text-[14px] md:text-[15px] leading-relaxed font-medium">
+//                     {step.description}
+//                   </p>
+//                 </div>
+//               </motion.div>
+//             ))}
+//           </div>
+//         </div>
+
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Work;
+
+
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap } from 'lucide-react';
@@ -140,7 +263,12 @@ const Work = () => {
   ];
 
   return (
-    <section className="min-h-screen py-16 md:py-24 bg-[#F8FAFC] overflow-hidden flex items-center">
+    <section 
+      id="how-it-works" 
+      // scroll-mt-48 (mobile) and md:scroll-mt-56 (desktop) provide a deep offset
+      // so that navigation jumps leave plenty of room for the sticky navbar.
+      className="w-full pt-10 pb-16 md:pt-20 md:pb-24 bg-[#F8FAFC] overflow-hidden scroll-mt-48 md:scroll-mt-56"
+    >
       <div className="container mx-auto px-6 lg:px-12">
         
         {/* --- HEADER --- */}
@@ -171,7 +299,7 @@ const Work = () => {
         {/* --- TIMELINE AREA --- */}
         <div className="relative">
           
-          {/* DESKTOP Horizontal Line (Visible only on LG screens) */}
+          {/* DESKTOP Horizontal Line */}
           <div className="hidden lg:block absolute top-[40px] left-10 w-[calc(100%-80px)] h-[2px] bg-slate-200 z-0">
             <motion.div 
               initial={{ width: 0 }}
@@ -182,7 +310,7 @@ const Work = () => {
             />
           </div>
 
-          {/* MOBILE Vertical Line (Visible only on mobile/tablet) */}
+          {/* MOBILE Vertical Line */}
           <div className="lg:hidden absolute left-[39px] top-10 bottom-10 w-[2px] bg-slate-200 z-0">
             <motion.div 
               initial={{ height: 0 }}
@@ -193,7 +321,6 @@ const Work = () => {
             />
           </div>
 
-          {/* Grid: 1 col on mobile, 4 on desktop */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8 relative z-10">
             {steps.map((step, index) => (
               <motion.div 

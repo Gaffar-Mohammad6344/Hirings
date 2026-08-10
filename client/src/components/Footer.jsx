@@ -301,7 +301,7 @@ const Footer = () => {
         {/* --- BOTTOM BAR --- */}
        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
   <p className="text-gray-500 text-[12px] font-medium text-center md:text-left">
-    © {new Date().getFullYear()} Hirings.in. Build and Design by Team <span className="text-white font-bold tracking-wide">Asthra</span>.
+    © {new Date().getFullYear()} Hirings.in. Designed and Developed by Team <span className="text-white font-bold tracking-wide">Asthra</span>.
   </p>
           
           <div className="flex items-center gap-3">
