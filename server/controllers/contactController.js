@@ -69,19 +69,27 @@ export const submitContactForm = async (req, res) => {
     `;
 
     // 3. SEND EMAIL TO THE USER
-    await sendEmail({
-      email: email,
-      subject: "We've received your inquiry - Hirings",
-      html: userHtml,
-    });
+    // await sendEmail({
+    //   email: email,
+    //   subject: "We've received your inquiry - Hirings",
+    //   html: userHtml,
+    // });
 
-    // 4. SEND EMAIL TO THE ADMIN (You)
+    // // 4. SEND EMAIL TO THE ADMIN (You)
+    // await sendEmail({
+    //   email: "info@hirings.in", // YOUR Destination
+    //   replyTo: email,                        // Allows you to click 'Reply' in inbox
+    //   subject: `🔥 New Lead: ${fullName}`,
+    //   html: adminHtml,
+    // });
+
+
     await sendEmail({
-      email: "info@hirings.in", // YOUR Destination
-      replyTo: email,                        // Allows you to click 'Reply' in inbox
-      subject: `🔥 New Lead: ${fullName}`,
-      html: adminHtml,
-    });
+  email: process.env.ADMIN_EMAIL,
+  replyTo: email,
+  subject: `New Lead: ${fullName}`,
+  html: adminHtml,
+});
 
     // 5. SUCCESS RESPONSE
     return res.status(200).json({ 

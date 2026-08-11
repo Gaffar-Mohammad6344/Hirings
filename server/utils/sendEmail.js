@@ -85,29 +85,61 @@
 // export default sendEmail;
 
 
-import nodemailer from "nodemailer";
+// import nodemailer from "nodemailer";
+
+// const sendEmail = async ({ email, subject, html, replyTo }) => {
+//   try {
+//     const transporter = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: {
+//         user: process.env.EMAIL_USER,
+//         pass: process.env.EMAIL_PASS,
+//       },
+//     });
+
+//     const mailOptions = {
+//       from: `"Hirings Portal" <${process.env.EMAIL_USER}>`, 
+//       to: email,      // This sends the data to your email
+//       replyTo: replyTo, // This is the user's email so you can reply to them
+//       subject: subject,
+//       html: html,
+//     };
+
+//     await transporter.sendMail(mailOptions);
+//   } catch (error) {
+//     console.error("Nodemailer Error:", error);
+//     throw new Error("Email sending failed");
+//   }
+// };
+
+// export default sendEmail;
+
+
+
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEmail = async ({ email, subject, html, replyTo }) => {
   try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    const mailOptions = {
-      from: `"Hirings Portal" <${process.env.EMAIL_USER}>`, 
-      to: email,      // This sends the data to your email
-      replyTo: replyTo, // This is the user's email so you can reply to them
+    const { data, error } = await resend.emails.send({
+      from: "Hirings <onboarding@resend.dev>",
+      to: [email],
+      replyTo: replyTo,
       subject: subject,
       html: html,
-    };
+    });
 
-    await transporter.sendMail(mailOptions);
+    if (error) {
+      console.error("Resend Error:", error);
+      throw new Error(error.message || "Email sending failed");
+    }
+
+    console.log("Email sent successfully:", data?.id);
+
+    return data;
   } catch (error) {
-    console.error("Nodemailer Error:", error);
+    console.error("Resend Email Error:", error);
     throw new Error("Email sending failed");
   }
 };
