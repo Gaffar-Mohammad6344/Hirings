@@ -116,6 +116,37 @@
 
 
 
+// import { Resend } from "resend";
+
+// const resend = new Resend(process.env.RESEND_API_KEY);
+
+// const sendEmail = async ({ email, subject, html, replyTo }) => {
+//   try {
+//     const { data, error } = await resend.emails.send({
+//       from: "Hirings <onboarding@resend.dev>",
+//       to: [email],
+//       replyTo: replyTo,
+//       subject: subject,
+//       html: html,
+//     });
+
+//     if (error) {
+//       console.error("Resend Error:", error);
+//       throw new Error(error.message || "Email sending failed");
+//     }
+
+//     console.log("Email sent successfully:", data?.id);
+
+//     return data;
+//   } catch (error) {
+//     console.error("Resend Email Error:", error);
+//     throw new Error("Email sending failed");
+//   }
+// };
+
+// export default sendEmail;
+
+
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -125,9 +156,9 @@ const sendEmail = async ({ email, subject, html, replyTo }) => {
     const { data, error } = await resend.emails.send({
       from: "Hirings <onboarding@resend.dev>",
       to: [email],
-      replyTo: replyTo,
-      subject: subject,
-      html: html,
+      replyTo,
+      subject,
+      html,
     });
 
     if (error) {
@@ -140,7 +171,7 @@ const sendEmail = async ({ email, subject, html, replyTo }) => {
     return data;
   } catch (error) {
     console.error("Resend Email Error:", error);
-    throw new Error("Email sending failed");
+    throw error;
   }
 };
 
