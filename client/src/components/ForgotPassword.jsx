@@ -184,7 +184,7 @@ const ForgotPassword = () => {
     if (!data.email) return toast.error("Please enter your email");
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:5000/api/admin/forgot-password", { email: data.email });
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/admin/forgot-password`, { email: data.email });
       if (res.data.success) {
         toast.success("OTP sent to your email");
         setStep(2);
@@ -202,7 +202,7 @@ const ForgotPassword = () => {
     if (data.otp.length !== 6) return toast.error("Enter 6-digit OTP");
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:5000/api/admin/verify-reset-otp", { 
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/admin/verify-reset-otp`, { 
         email: data.email, 
         otp: data.otp 
       });
@@ -225,7 +225,7 @@ const ForgotPassword = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:5000/api/admin/reset-password", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/admin/reset-password`, {
         email: data.email,
         password: data.newPassword
       });

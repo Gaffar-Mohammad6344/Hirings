@@ -116,9 +116,9 @@ const Dashboard = () => {
     setLoading(true);
     try {
       const [sRes, cRes, pRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/dashboard/stats'),
-        axios.get('http://localhost:5000/api/candidates'),
-        axios.get('http://localhost:5000/api/contact')
+        axios.get(`${import.meta.env.VITE_API_URL}/api/dashboard/stats`),
+        axios.get(`${import.meta.env.VITE_API_URL}/api/candidates`),
+        axios.get(`${import.meta.env.VITE_API_URL}/api/contact`)
       ]);
       setStats(sRes.data);
       setCandidates(cRes.data);
@@ -153,7 +153,7 @@ const Dashboard = () => {
 
   const handleStatusChange = async (id, newStatus) => {
     try {
-      await axios.patch(`http://localhost:5000/api/candidates/${id}/status`, { status: newStatus });
+      await axios.patch(`${import.meta.env.VITE_API_URL}/api/candidates/${id}/status`, { status: newStatus });
       toast.success(`Status updated to ${newStatus}`);
       fetchDashboardData();
     } catch (e) { toast.error("Status update failed"); }
@@ -169,8 +169,8 @@ const Dashboard = () => {
     if (!selectedId) return;
     try {
       const url = deleteType === 'candidate' 
-        ? `http://localhost:5000/api/candidates/${selectedId}`
-        : `http://localhost:5000/api/contact/${selectedId}`;
+        ? `${import.meta.env.VITE_API_URL}/api/candidates/${selectedId}`
+        : `${import.meta.env.VITE_API_URL}/api/contact/${selectedId}`;
       
       await axios.delete(url);
       toast.success(`${deleteType.charAt(0).toUpperCase() + deleteType.slice(1)} record deleted`);
@@ -389,7 +389,7 @@ const Dashboard = () => {
                         <td className="px-6 lg:px-7 py-4 lg:py-5">
                           <div className="flex items-center gap-4">
                             {activeTab === 'Candidates' && (
-                              <a href={`http://localhost:5000/${item.resumePath}`} target="_blank" rel="noreferrer">
+                              <a href={`${import.meta.env.VITE_API_URL}/${item.resumePath}`} target="_blank" rel="noreferrer">
                                 <FileText size={19} className="text-[#0B57D0] hover:scale-110 transition-all"/>
                               </a>
                             )}

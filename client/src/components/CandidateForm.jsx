@@ -102,11 +102,15 @@ const CandidateForm = () => {
       data.append("skills", JSON.stringify(skills));
       data.append("resume", file);
 
-      const response = await axios.post(
-        "http://localhost:5000/api/candidates/apply",
-        data,
-        { headers: { "Content-Type": "multipart/form-data" } }
-      );
+   const response = await axios.post(
+  `${import.meta.env.VITE_API_URL}/api/candidates/apply`,
+  data,
+  {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  }
+);
 
       if (response.data.success) {
         setIsSubmitted(true);
