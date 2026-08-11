@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import axios from 'axios';
+// import axios from 'axios';
+import api from "../api";
 import { CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function ContactForm() {
@@ -48,10 +49,11 @@ export default function ContactForm() {
     setStatus({ type: '', message: '' });
 
     try {
-   const response = await axios.post(
-  `${import.meta.env.VITE_API_URL}/api/contact`,
-  formData
-);
+  //  const response = await axios.post(
+  // `${import.meta.env.VITE_API_URL}/api/contact`,
+  // formData);
+  const response = await api.post("/contact", formData);
+
       if (response.data.success) {
         setStatus({ type: 'success', message: 'Message sent! We will get back to you shortly.' });
         
